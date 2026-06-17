@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AETHER | Luxury Horology & Craftsmanship</title>
+  <meta name="description" content="Discover AETHER, where Swiss-inspired horology meets premium modern aesthetics. Explore our mechanical collections and build your bespoke luxury timepiece.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Success Toast Alert -->
+  <div id="toast" class="success-toast">
+    <svg viewBox="0 0 24 24">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toast-message">Item added to your collection</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header id="main-header">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        AETHER<span>HOROLOGY</span>
+      </a>
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#customizer">Customizer</a></li>
+          <li><a href="#heritage">Heritage</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button id="cart-toggle-btn" class="cart-icon-container" aria-label="Open Shopping Cart">
+          <svg viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span id="cart-badge-count" class="cart-badge">0</span>
+        </button>
+        <button id="menu-toggle-btn" class="menu-toggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Landing Section -->
+  <section id="hero" class="hero">
+    <div class="hero-bg-accent"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="hero-subtitle">Bespoke Horology</span>
+        <h1 class="hero-title">
+          Crafting Time,
+          <span>Defining Heritage.</span>
+        </h1>
+        <p class="hero-description">
+          AETHER timepieces combine meticulous engineering with modern aesthetic excellence. Handcrafted to celebrate precision, legacy, and design.
+        </p>
+        <div class="hero-actions">
+          <a href="#collections" class="gold-btn solid">Explore Collection</a>
+          <a href="#customizer" class="gold-btn">Design Bespoke</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-wrapper">
+          <!-- AI generated image -->
+          <img src="assets/hero-watch.png" alt="AETHER Tourbillon Luxury Watch closeup showing intricate mechanical movements" width="400" height="400">
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span></span>
+      Scroll Down
+    </div>
+  </section>
+
+  <!-- Collections Catalog Section -->
+  <section id="collections" class="collections">
+    <div class="catalog-container">
+      <div class="section-title">
+        <p>Curated Catalog</p>
+        <h2>Masterpiece Collections</h2>
+      </div>
+
+      <div class="catalog-controls">
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">All Series</button>
+          <button class="filter-btn" data-filter="chronograph">Chronograph</button>
+          <button class="filter-btn" data-filter="classic">Classic</button>
+          <button class="filter-btn" data-filter="automatic">Automatic</button>
+          <button class="filter-btn" data-filter="diver">Diver</button>
+        </div>
+        <select id="sort-select" class="sort-select">
+          <option value="default">Default Sorting</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </div>
+
+      <div id="product-grid" class="product-grid">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Watch Configurator Section -->
+  <section id="customizer" class="customizer">
+    <div class="customizer-container">
+      <div class="section-title">
+        <p>AETHER Studio</p>
+        <h2>Design Your Masterpiece</h2>
+      </div>
+
+      <div class="customizer-layout">
+        <!-- Visual Watch SVG Layers Panel -->
+        <div class="customizer-preview">
+          <div class="preview-background-glow"></div>
+          <div class="watch-svg-layers">
+            <!-- Layers render here using highly detailed inline SVGs styled via JS -->
+            <svg id="custom-watch-svg" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Gradients for Dial Color Configurations -->
+                <radialGradient id="grad-emerald" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#0b3f2a" />
+                  <stop offset="70%" stop-color="#051f15" />
+                  <stop offset="100%" stop-color="#020a07" />
+                </radialGradient>
+                <radialGradient id="grad-midnight" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#1b2535" />
+                  <stop offset="70%" stop-color="#0f151f" />
+                  <stop offset="100%" stop-color="#05070a" />
+                </radialGradient>
+                <radialGradient id="grad-champagne" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#e5c158" stop-opacity="0.6"/>
+                  <stop offset="75%" stop-color="#a07a2a" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#3c2f10" />
+                </radialGradient>
+                
+                <!-- Metallic gradients for bezel/case configurations -->
+                <linearGradient id="grad-gold-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f5d475" />
+                  <stop offset="30%" stop-color="#d4af37" />
+                  <stop offset="70%" stop-color="#9a7b1c" />
+                  <stop offset="100%" stop-color="#f5d475" />
+                </linearGradient>
+                <linearGradient id="grad-platinum-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f0f0f0" />
+                  <stop offset="30%" stop-color="#cccccc" />
+                  <stop offset="70%" stop-color="#888888" />
+                  <stop offset="100%" stop-color="#f0f0f0" />
+                </linearGradient>
+                <linearGradient id="grad-obsidian-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#333333" />
+                  <stop offset="50%" stop-color="#151515" />
+                  <stop offset="100%" stop-color="#050505" />
+                </linearGradient>
+
+                <!-- Shadows and filters -->
+                <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+                  <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.65" />
+                </filter>
+              </defs>
+
+              <!-- STRAP LAYER (Bottom) -->
+              <g id="svg-strap-layer" filter="url(#shadow)">
+                <!-- Strap path drawn dynamically in app.js -->
+              </g>
+
+              <!-- CASE LAYER -->
+              <g id="svg-case-layer" filter="url(#shadow)">
+                <!-- Outer Case Body -->
+                <path d="M 190,40 L 220,40 L 235,90 A 110,110 0 0,1 275,105 L 290,50 L 320,50 L 305,100 L 305,102 A 130,130 0 0,1 305,278 L 320,330 L 290,330 L 275,275 A 110,110 0 0,1 235,290 L 220,340 L 190,340 L 190,340 L 160,340 L 145,290 A 110,110 0 0,1 105,275 L 90,330 L 60,330 L 75,278 A 130,130 0 0,1 75,102 L 60,50 L 90,50 L 105,105 A 110,110 0 0,1 145,90 L 160,40 Z" id="watch-casing" fill="url(#grad-gold-metal)" stroke="#111" stroke-width="1"/>
+                
+                <!-- Crown button -->
+                <rect x="307" y="178" width="12" height="24" rx="2" id="watch-crown" fill="url(#grad-gold-metal)" stroke="#222"/>
+                <line x1="311" y1="180" x2="311" y2="200" stroke="#000" stroke-width="1"/>
+                <line x1="315" y1="180" x2="315" y2="200" stroke="#000" stroke-width="1"/>
+                
+                <!-- Bezel base outer ring -->
+                <circle cx="190" cy="190" r="115" id="watch-bezel-outer" fill="url(#grad-gold-metal)" stroke="#333" stroke-width="1"/>
+                <circle cx="190" cy="190" r="105" id="watch-bezel-inner" fill="#151515" stroke="#333" stroke-width="0.5"/>
+              </g>
+
+              <!-- DIAL LAYER -->
+              <g id="svg-dial-layer">
+                <!-- Dial Sunburst Face -->
+                <circle cx="190" cy="190" r="101" id="watch-dial-face" fill="url(#grad-emerald)" />
+                
+                <!-- Subtle dial pattern grid -->
+                <circle cx="190" cy="190" r="95" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                <circle cx="190" cy="190" r="85" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="3 3"/>
+                
+                <!-- Dial Hour Markers -->
+                <g stroke="var(--accent-gold)" stroke-linecap="round" id="watch-markers" class="glow-accent">
+                  <!-- Hour markers generated dynamically via Javascript in app.js or listed here -->
+                  <line x1="190" y1="95" x2="190" y2="105" stroke-width="3"/>
+                  <line x1="285" y1="190" x2="275" y2="190" stroke-width="3"/>
+                  <line x1="190" y1="285" x2="190" y2="275" stroke-width="3"/>
+                  <line x1="95" y1="190" x2="105" y2="190" stroke-width="3"/>
+                  
+                  <line x1="237.5" y1="108.2" x2="232.5" y2="116.9" stroke-width="1.5" stroke="rgba(255,255,255,0.4)"/>
+                  <line x1="271.8" y1="142.5" x2="263.1" y2="147.5" stroke-width="1.5" stroke="rgba(255,255,255,0.4)"/>
+                  <line x1="271.8" y1="237.5" x2="263.1" y2="232.5" stroke-width="1.5" stroke="rgba(255,255,255,0.4)"/>
+                  <line x1="237.5" y1="271.8" x2="232.5" y2="263.1" stroke-width="1.5" stroke="rgba(255,255,255,0.4)"/>
+                  <line x1="142.5" y1="271.8" x2="147.5" y2="263.1" stroke-width="1.5" stroke="rgba(255,255,255,0.4)"/>
+                  <line x1="108.2" y1="237.5" x2="116.9" y2="232.5" stroke-width="1.5" stroke="rgba(255,255,255,0.4)"/>
+                  <line x1="108.2" y1="142.5" x2="116.9" y2="147.5" stroke-width="1.5" stroke="rgba(255,255,255,0.4)"/>
+                  <line x1="142.5" y1="108.2" x2="147.5" y2="116.9" stroke-width="1.5" stroke="rgba(255,255,255,0.4)"/>
+                </g>
+
+                <!-- Subtle Brand Name on Dial -->
+                <text x="190" y="145" font-family="'Playfair Display', serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.6)" letter-spacing="3" text-anchor="middle">AETHER</text>
+                <text x="190" y="245" font-family="'Inter', sans-serif" font-size="6" font-weight="400" fill="var(--accent-gold)" letter-spacing="1" text-anchor="middle">AUTOMATIC</text>
+              </g>
+
+              <!-- WATCH HANDS LAYER -->
+              <g id="svg-hands-layer">
+                <!-- Hour Hand -->
+                <g class="hands-hour">
+                  <polygon points="190,193 186,190 190,130 194,190" fill="var(--accent-platinum)" stroke="#111" stroke-width="0.5"/>
+                  <line x1="190" y1="190" x2="190" y2="135" stroke="var(--accent-gold)" stroke-width="1"/>
+                </g>
+
+                <!-- Minute Hand -->
+                <g class="hands-minute">
+                  <polygon points="190,194 187,190 190,105 193,190" fill="var(--accent-platinum)" stroke="#111" stroke-width="0.5"/>
+                  <line x1="190" y1="190" x2="190" y2="110" stroke="var(--accent-gold)" stroke-width="1"/>
+                </g>
+
+                <!-- Center cap pin -->
+                <circle cx="190" cy="190" r="5" fill="url(#grad-gold-metal)" stroke="#111" stroke-width="0.5"/>
+                
+                <!-- Sweeping Second Hand -->
+                <g class="hands-anim">
+                  <line x1="190" y1="215" x2="190" y2="92" stroke="#d4af37" stroke-width="1"/>
+                  <circle cx="190" cy="98" r="3" fill="#d4af37"/>
+                  <circle cx="190" cy="190" r="2.5" fill="#111"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Customizer Control Controls -->
+        <div class="customizer-options">
+          <div class="config-group">
+            <span class="config-group-title">Case Material</span>
+            <div class="option-selectors">
+              <button class="option-btn active" data-config-type="case" data-value="gold">
+                <span class="color-dot" style="background: #d4af37;"></span> Rose Gold
+              </button>
+              <button class="option-btn" data-config-type="case" data-value="platinum">
+                <span class="color-dot" style="background: #cccccc;"></span> Brushed Platinum
+              </button>
+              <button class="option-btn" data-config-type="case" data-value="obsidian">
+                <span class="color-dot" style="background: #1e1e1e;"></span> Matte Obsidian
+              </button>
+            </div>
+          </div>
+
+          <div class="config-group">
+            <span class="config-group-title">Dial Color</span>
+            <div class="option-selectors">
+              <button class="option-btn active" data-config-type="dial" data-value="emerald">
+                <span class="color-dot" style="background: #0b3f2a;"></span> Emerald Sunburst
+              </button>
+              <button class="option-btn" data-config-type="dial" data-value="midnight">
+                <span class="color-dot" style="background: #1b2535;"></span> Midnight Matte
+              </button>
+              <button class="option-btn" data-config-type="dial" data-value="champagne">
+                <span class="color-dot" style="background: #bfa142;"></span> Champagne Gold
+              </button>
+            </div>
+          </div>
+
+          <div class="config-group">
+            <span class="config-group-title">Strap Style</span>
+            <div class="option-selectors">
+              <button class="option-btn active" data-config-type="strap" data-value="steel">
+                Oyster Steel Mesh
+              </button>
+              <button class="option-btn" data-config-type="strap" data-value="leather">
+                Alligator Leather
+              </button>
+              <button class="option-btn" data-config-type="strap" data-value="rubber">
+                Sport Vulcanized Rubber
+              </button>
+            </div>
+          </div>
+
+          <!-- Configuration specification summary -->
+          <div class="config-summary-card">
+            <div class="summary-row">
+              <span class="summary-label">Case:</span>
+              <span id="summary-case-val" class="summary-value">Rose Gold</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Dial:</span>
+              <span id="summary-dial-val" class="summary-value">Emerald Sunburst</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Strap:</span>
+              <span id="summary-strap-val" class="summary-value">Oyster Steel Mesh</span>
+            </div>
+            
+            <div class="config-price-box">
+              <span class="config-price-label">ESTIMATED VALUATION</span>
+              <span id="config-price-val" class="config-price-value">$8,200</span>
+            </div>
+          </div>
+
+          <button id="config-add-to-cart" class="gold-btn solid" style="width: 100%;">Add Bespoke Watch to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heritage / Craftsmanship Section -->
+  <section id="heritage" class="heritage">
+    <div class="heritage-container">
+      <div class="section-title">
+        <p>AETHER Heritage</p>
+        <h2>Uncompromising Standards</h2>
+      </div>
+
+      <div class="heritage-grid">
+        <div class="heritage-card">
+          <div class="heritage-icon">
+            <svg viewBox="0 0 24 24">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+            </svg>
+          </div>
+          <h3>Swiss Precision</h3>
+          <p>Each model leverages certified chronometer automatic escapements assembled in Geneva. Engineered with custom-built caliber plates delivering 72 hours of uninterrupted power reserve.</p>
+        </div>
+
+        <div class="heritage-card">
+          <div class="heritage-icon">
+            <svg viewBox="0 0 24 24">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"></polygon>
+              <line x1="12" y1="22" x2="12" y2="15.5"></line>
+              <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              <polyline points="2 15.5 12 8.5 22 15.5"></polyline>
+              <line x1="12" y1="2" x2="12" y2="8.5"></line>
+            </svg>
+          </div>
+          <h3>Noble Materials</h3>
+          <p>We forge timepieces using premium materials. From 904L aerospace stainless steel, 18-karat rose gold, matte carbon fibers, and grade 5 titanium to double-arched anti-reflective sapphire crystals.</p>
+        </div>
+
+        <div class="heritage-card">
+          <div class="heritage-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
+          </div>
+          <h3>Bespoke Hand Assembly</h3>
+          <p>Every hand, index, and complication is set under microscopic guidance by a dedicated master watchmaker. Individually tested across 5 pressure positions to guarantee absolute reliability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sliding Shopping Cart Drawer -->
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Your Collection</h3>
+      <button id="close-cart-btn" class="close-cart-btn" aria-label="Close Cart">
+        <svg viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div id="cart-drawer-body" class="cart-drawer-body">
+      <!-- Generated Dynamically by JS -->
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal">
+        <span class="subtotal-label">Subtotal</span>
+        <span id="cart-subtotal-value" class="subtotal-value">$0</span>
+      </div>
+      <button id="checkout-btn" class="gold-btn solid" style="width: 100%;">Proceed to Acquisition</button>
+    </div>
+  </div>
+
+  <!-- Cart drawer overlay background -->
+  <div id="cart-overlay-bg" class="cart-overlay-bg"></div>
+
+  <!-- Product Specifications Detail Modal -->
+  <div id="details-modal" class="modal">
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+    <div class="modal-content-wrapper">
+      <button id="close-modal-btn" class="close-modal-btn" aria-label="Close Details Modal">
+        <svg viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-body">
+        <div class="modal-img-column">
+          <img id="modal-watch-img" src="assets/chrono.png" alt="Detail watch image">
+        </div>
+        <div class="modal-info-column">
+          <span id="modal-watch-category" class="modal-category">Chronograph</span>
+          <h3 id="modal-watch-title" class="modal-title">Legacy Chrono</h3>
+          <div id="modal-watch-price" class="modal-price">$6,800</div>
+          <p id="modal-watch-desc" class="modal-description">An exceptional timepiece celebrating mechanical complexity and sporty heritage. Driven by our self-winding integrated column-wheel chronograph caliber.</p>
+          
+          <div class="modal-specs-table">
+            <div class="modal-spec-row">
+              <span class="modal-spec-label">Caliber</span>
+              <span id="modal-spec-caliber" class="modal-spec-value">AE-3012 Chrono</span>
+            </div>
+            <div class="modal-spec-row">
+              <span class="modal-spec-label">Movement</span>
+              <span id="modal-spec-movement" class="modal-spec-value">Self-Winding Automatic</span>
+            </div>
+            <div class="modal-spec-row">
+              <span class="modal-spec-label">Crystal</span>
+              <span id="modal-spec-crystal" class="modal-spec-value">Arched Sapphire, Anti-Reflective</span>
+            </div>
+            <div class="modal-spec-row">
+              <span class="modal-spec-label">Water Resistance</span>
+              <span id="modal-spec-water" class="modal-spec-value">100 Meters / 10 ATM</span>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button id="modal-add-to-cart-btn" class="gold-btn solid" style="flex-grow: 1;">Add to Collection</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>AETHER</h3>
+        <p>A dedicated pursuit of horological perfection. We design, craft, and assemble elite mechanical instruments for individuals who define their own legacy.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#customizer">Bespoke Studio</a></li>
+          <li><a href="#heritage">Heritage</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h4>AETHER Dispatch</h4>
+        <p>Subscribe to receive exclusive collection updates, technical disclosures, and custom commissions availability notifications.</p>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" placeholder="ENTER YOUR EMAIL" class="newsletter-input" required>
+          <button type="submit" class="newsletter-submit-btn" aria-label="Submit Newsletter">
+            <svg viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AETHER Horological Society. All rights reserved.</p>
+      <p>GENEVA &bull; TOKYO &bull; NEW YORK</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
